@@ -1,0 +1,58 @@
+---
+title: "Shiny Application and Reproducible Pitch"
+author: "Sean"
+date: "December 6, 2016"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Simple shinyapp on predicting house price
+
+- We will use the dataset from Kaggle on house price.
+
+- You can refer to the following link: 
+
+https://www.kaggle.com/harlfoxem/housesalesprediction 
+
+
+
+
+## About the dataset
+
+- This dataset contains house sale prices for King County, which includes Seattle. It includes homes sold between May 2014 and May 2015.
+- Let's take look at the dataset:
+
+```{r}
+housedata <- read.csv('kc_house_data.csv')
+names(housedata)
+
+```
+
+- We will take **sqft_living** and **sqft_above** to do the prediction. Refers to the living square feet and **sqft_above** = **sqft_living** - **sqft_basement**.
+
+## Plot of the two regression line
+
+```{r}
+par(mfrow=c(1,2))
+plot(price~sqft_living, housedata, col='steelblue')
+abline(lm(price~sqft_living, housedata), col='red', lwd = 4)
+plot(price~sqft_above, housedata, col='steelblue')
+abline(lm(price~sqft_above, housedata), col='red', lwd = 4)
+
+```
+
+We can use either regression line to predict the price of the house.
+
+
+
+## Shinyapp's UI
+
+![](Untitled.png)
+
+- Move the slider from 290 to 3000 to predict.
+- The pink line is for **sqft_living** and the blue line is for **sqft_above**.
+- We can also check the average predicted price at the bottom. 
+
