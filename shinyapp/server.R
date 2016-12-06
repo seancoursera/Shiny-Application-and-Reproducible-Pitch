@@ -37,14 +37,14 @@ shinyServer(function(input, output) {
         plot(housedata$price, housedata$sqft_living, xlab = "Square Feet", 
              ylab = "House price", bty = "n", pch = 16,
              xlim = c(0, 4000), ylim = c(0, 1500000))
-        if(input$showModel1){
+        
             abline(model1, col = "steelblue", lwd = 2)
-        }
-        if(input$showModel2){
+        
+       
             model2lines <- predict(model2, newdata = data.frame(
                 sqft_above = 290:4000))
             lines(290:4000, model2lines, col = "pink", lwd = 2)
-        }
+       
         
         legend(25, 250, c("Model 1 Prediction", "Model 2 Prediction"), pch = 16, 
                col = c("red", "blue"), bty = "n", cex = 1.2)

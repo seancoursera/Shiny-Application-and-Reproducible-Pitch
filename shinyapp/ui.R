@@ -13,9 +13,8 @@ shinyUI(fluidPage(
     titlePanel("Predict House price by living sqft and above sqft"),
     sidebarLayout(
         sidebarPanel(
-            sliderInput("sliderSqft", "What is the square feet of the house?", 290, 3000, value = 10),
-            checkboxInput("showModel1", "Show/Hide Model 1", value = TRUE),
-            checkboxInput("showModel2", "Show/Hide Model 2", value = TRUE)
+            sliderInput("sliderSqft", "What is the square feet of the house?", 290, 3000, value = 10)
+            
         ),
         mainPanel(
             plotOutput("plot1"),
